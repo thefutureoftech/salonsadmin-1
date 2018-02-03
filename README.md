@@ -1,2 +1,0 @@
-# salonsadmin
-salon administration interface
