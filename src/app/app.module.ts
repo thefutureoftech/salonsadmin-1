@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { TranslateService } from './translate/translate.service';
+import { TRANSLATION_PROVIDERS } from './translate/translation';
+import { TranslatePipe } from './translate/translate.pipe';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TranslatePipe 
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [TRANSLATION_PROVIDERS, TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
