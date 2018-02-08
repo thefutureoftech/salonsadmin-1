@@ -1,9 +1,10 @@
-import {Injectable, Inject} from '@angular/core';
+import {Injectable, Inject, transition, EventEmitter} from '@angular/core';
 import { TRANSLATIONS } from './translation'; // import our opaque token
 
 @Injectable()
 export class TranslateService {
     private _currentLang: string;
+    public onLangChanged: EventEmitter<string> = new EventEmitter<string>();
 
     public get currentLang() {
         return this._currentLang;
@@ -16,6 +17,7 @@ export class TranslateService {
     public use(lang: string): void {
         // set current language
         this._currentLang = lang;
+        this.onLangChanged.emit(lang); // publish changes
     }
 
     private translate(key: string): string {
@@ -29,9 +31,26 @@ export class TranslateService {
         return translation;
     }
 
-    public instant(key: string) {
-        // call translation
-        return this.translate(key); 
+    public instant(key: string, words?: string | string[]) { // add optional parameter
+        const translation: string = this.translate(key);
+        if (!words) return translation;
+        return this.replace(translation, words); // call replace function
+    }
+
+    private PLACEHOLDER = '%'; // our placeholder
+
+    public replace(word: string = '', words: string | string[] = '') {
+
+        let translation: string = word;
+
+        const values: string[] = [].concat(words);
+
+        values.forEach((e, i) => {
+            translation = translation.replace(this.PLACEHOLDER.concat(<any>i), e);
+        });
+    
+        return translation;
+
     }
 
 }

@@ -22,8 +22,15 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "@mobiscroll/angular": "^4.0.0-beta3.1",
+    "chart.js": "^2.5.0",
     "core-js": "^2.4.1",
+    "easy-pie-chart": "^2.1.7",
+    "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
+    "ng-mdb-pro": "git+https://oauth2:9k9Ss4wqKGty_As5rukW@git.mdbootstrap.com/mdb/angular/ng-pro.git",
     "rxjs": "^5.5.2",
+    "screenfull": "^3.3.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

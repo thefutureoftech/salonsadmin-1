@@ -1,0 +1,19 @@
+<mbsc-form [options]="formSettings" lang="ar">
+    <h3 class="mbsc-form-group-title mbsc-align-center" style="color: black;font-size: 24px;font-style: oblique">
+        {{ 'Salon Administration' | translate }}
+    </h3>
+    <div class="md-hamb">
+        <mbsc-hamburger-nav [options]="iconMenu">
+            <mbsc-nav-item data-icon="newspaper">News</mbsc-nav-item>
+            <mbsc-nav-item data-icon="material-people">People</mbsc-nav-item>
+            <mbsc-nav-item data-icon="bubble">Messages</mbsc-nav-item>
+            <mbsc-nav-item data-icon="fa-globe">Notifications</mbsc-nav-item>
+        </mbsc-hamburger-nav>
+    </div>
+    <mbsc-bottom-nav [options]="iconNav">
+        <mbsc-nav-item data-icon="newspaper">News</mbsc-nav-item>
+        <mbsc-nav-item data-icon="material-people" data-badge="1">People</mbsc-nav-item>
+        <mbsc-nav-item data-icon="bubble" data-badge="9">Messages</mbsc-nav-item>
+        <mbsc-nav-item data-icon="fa-globe">Notifications</mbsc-nav-item>
+    </mbsc-bottom-nav>
+</mbsc-form>
