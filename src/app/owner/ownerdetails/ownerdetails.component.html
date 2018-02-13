@@ -1,0 +1,28 @@
+<mbsc-form class="md-create-account" [options]="formSettings">
+    <form #frm="ngForm" novalidate (ngSubmit)="createOwner(frm)">
+
+        <br>
+        <div class="md-cac-title mbsc-padding">
+            <p>{{ 'continue_owner_create' | translate}}</p>
+        </div>
+        <div class="md-cac-cont">
+            <div *ngIf="!ownerCreatedText">
+                <mbsc-input required ngModel name="name" type="text" placeholder={{nameText}}></mbsc-input>
+                <mbsc-input name="email" type="email" required ngModel placeholder={{emailText}}></mbsc-input>
+                <mbsc-input name="password" type="password" required ngModel placeholder={{passwordText}} password-toggle="true"></mbsc-input>
+                <mbsc-input type="number" name="numpad" required ngModel placeholder={{phoneText}}></mbsc-input>
+            </div>
+            <div class="md-cac-btn mbsc-form-group-inset mbsc-btn-group-block" *ngIf="!ownerCreatedText">
+                <mbsc-button type="submit" [disabled]="!frm.valid">{{createOwnerAccountText}}</mbsc-button>
+            </div>
+            <button class="mbsc-btn-flat" style="align-content: center" type="button" [hidden]="ownerCreatedText">{{ownerCreatedText}}</button>
+        </div>
+    </form>
+</mbsc-form>
+
+<div class="align-items-center">
+        <p-progressSpinner *ngIf="spinning"></p-progressSpinner>
+</div>
+
+
+    <!-- <div class="md-chart-pic"></div>  -->

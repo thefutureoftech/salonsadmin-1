@@ -1,0 +1,21 @@
+<mbsc-form lang="ar">
+    <p class="mbsc-align-center" style="color: black;font-size: 24px;font-style: oblique">
+        {{salonAdminTitle }}
+    </p>
+    <div class="md-hamb">
+        <mbsc-hamburger-nav *ngIf="showHambMenu" [options]="iconMenu" (onItemTap)="navItemTapped($event)">
+            <mbsc-nav-item id="createCountry" data-icon="file4" #countryNav>
+                {{createCountryText}}    
+            </mbsc-nav-item>
+            <mbsc-nav-item data-icon="file4">{{createStatesText}}</mbsc-nav-item>
+        </mbsc-hamburger-nav>
+    </div>
+    <mbsc-bottom-nav [options]="iconNav" (onItemTap)="navItemTapped($event)">
+        <mbsc-nav-item id="createOwner" data-icon="file4">
+            {{createStoreOwnerText}}
+        </mbsc-nav-item>
+        <mbsc-nav-item data-icon="file4">{{createCitiesText}}</mbsc-nav-item>
+        <mbsc-nav-item data-icon="file4">{{createTownsText}}</mbsc-nav-item>
+        <mbsc-nav-item data-icon="file4">{{createBlocksText}}</mbsc-nav-item>
+    </mbsc-bottom-nav>
+</mbsc-form>
