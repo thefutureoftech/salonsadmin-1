@@ -2,9 +2,12 @@ import { mobiscroll } from '@mobiscroll/angular/dist/js/mobiscroll.angular.min.j
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '../../translate/translate.service';
 import { Subscription } from 'rxjs/Subscription';
+<<<<<<< HEAD
 import { LANG_AR_TRANS } from '../../translate/lang-ar';
 import * as langs_trans from '../../translate/langs.trans';
 import { Router, ActivatedRoute } from '@angular/router';
+=======
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 
 
 @Component({
@@ -37,6 +40,7 @@ export class NavbarComponent implements OnInit {
   public translatedText: string;
   public supportedLanguages: any[];
   langSubs: Subscription;
+<<<<<<< HEAD
 
   salonAdminTitle: string;
   createStoreOwnerText: string;
@@ -51,6 +55,11 @@ export class NavbarComponent implements OnInit {
 
   constructor(private _translate: TranslateService, private router: Router, 
               private activeRoute: ActivatedRoute) { }
+=======
+  
+
+  constructor(private _translate: TranslateService) { }
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 
   ngOnInit() {
 
@@ -59,6 +68,7 @@ export class NavbarComponent implements OnInit {
       { display: 'Arabic', value: 'ar' },
     ];
 
+<<<<<<< HEAD
     this._translate.use('en');
 
     this.salonAdminTitle = this._translate.instant(langs_trans.SALON_ADMIN);
@@ -102,5 +112,31 @@ export class NavbarComponent implements OnInit {
   // ngOnDestroy() {
   //   this.langSubs.unsubscribe();
   // }
+=======
+    this.selectLang('ar');
+
+  }
+
+    isCurrentLang(lang: string) {
+    return lang === this._translate.currentLang;
+  }
+
+  selectLang(lang: string) {
+    this._translate.use(lang);
+  }
+
+  refreshText() {
+    this.translatedText = this._translate.instant('hello world');
+  }
+
+  subscribeToLangChanged() {
+
+    this.langSubs = this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
+
+  ngOnDestroy() {
+    this.langSubs.unsubscribe();
+  }
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 
 }

@@ -10,6 +10,7 @@ export const LANG_AR_TRANS = {
     'nameText': 'الإسم',
     'emailText': 'البريد الإلكتروني',
     'passwordText': 'كلمة المرور',
+<<<<<<< HEAD
     'phoneText': 'رقم الموبايل',
     'CREATE_COUNTRY_LBL': 'Create Country',
     'CREATE_STATES_LBL': 'Create States',
@@ -19,4 +20,7 @@ export const LANG_AR_TRANS = {
     'CREATE_STORE_OWNER': 'Create Store Owner',
     'CREATE_BLOCK_LBL': 'Create Blocks',
     'CREATE_OWNER_ACCOUNT_LBL': 'Create Owner Account'
+=======
+    'phoneText': 'رقم الموبايل'
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 };

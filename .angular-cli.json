@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+<<<<<<< HEAD
         "../node_modules/primeng/resources/themes/bootstrap/theme.css",
         "../node_modules/@mobiscroll/angular/dist/css/mobiscroll.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
@@ -32,6 +33,19 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/fullcalendar/dist/fullcalendar.min.js"
+=======
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+        "../node_modules/ng-mdb-pro/assets/scss/bootstrap/bootstrap.scss",
+        "../node_modules/ng-mdb-pro/assets/scss/mdb.scss",
+        "../node_modules/@mobiscroll/angular/dist/css/mobiscroll.min.css",
+        "styles.css"
+      ],
+      "scripts": [
+        "../node_modules/chart.js/dist/Chart.js",
+        "../node_modules/easy-pie-chart/dist/easypiechart.js",
+        "../node_modules/screenfull/dist/screenfull.js",
+        "../node_modules/hammerjs/hammer.min.js"
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

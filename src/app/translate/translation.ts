@@ -9,7 +9,11 @@ import { LANG_AR_NAME, LANG_AR_TRANS } from './lang-ar';
 export const TRANSLATIONS = new InjectionToken('translations');
 
 // all translations
+<<<<<<< HEAD
 export const dictionary = {
+=======
+const dictionary = {
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
     [LANG_EN_NAME]: LANG_EN_TRANS,
     [LANG_AR_NAME]: LANG_AR_TRANS
 };

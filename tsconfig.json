@@ -15,6 +15,11 @@
       "es2017",
       "dom"
     ]
+<<<<<<< HEAD
   }
   // "include": ["node_modules/ng-mdb-pro/**/*.ts",  "src/**/*.ts"]
+=======
+  },
+  "include": ["node_modules/ng-mdb-pro/**/*.ts",  "src/**/*.ts"]
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 }

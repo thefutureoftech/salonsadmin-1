@@ -7,10 +7,13 @@
 
 # dependencies
 /node_modules
+<<<<<<< HEAD
 /functions/node_modules
 
 #Environments
 /environments
+=======
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 
 # IDEs and editors
 /.idea

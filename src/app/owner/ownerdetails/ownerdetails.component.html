@@ -1,4 +1,5 @@
 <mbsc-form class="md-create-account" [options]="formSettings">
+<<<<<<< HEAD
     <form #frm="ngForm" novalidate (ngSubmit)="createOwner(frm)">
 
         <br>
@@ -26,3 +27,24 @@
 
 
     <!-- <div class="md-chart-pic"></div>  -->
+=======
+<!-- <div class="md-chart-pic"></div>  -->
+
+  <br>
+  <div class="md-cac-title mbsc-padding">
+       <p>{{ 'continue_owner_create' | translate}}</p> 
+  </div>
+  <div class="md-cac-cont">
+      <div class="">
+          <mbsc-input name="username" type="text" placeholder={{nameText}}></mbsc-input>
+          <mbsc-input name="email" type="email" placeholder={{emailText}}></mbsc-input>
+          <mbsc-input name="password" type="text" placeholder={{passwordText}} password-toggle="true"></mbsc-input>
+          <mbsc-input [(ngModel)]="numpad" mbsc-numpad [mbsc-options]="numpadSettings" placeholder={{phoneText}}></mbsc-input>
+      </div>
+      <div class="md-cac-btn mbsc-form-group-inset mbsc-btn-group-block">
+          <mbsc-button type="submit">Create account</mbsc-button>
+          <mbsc-button flat="true"> I'll do it later</mbsc-button>
+      </div>
+  </div>
+</mbsc-form>
+>>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
