@@ -1,0 +1,8 @@
+<div class="mbsc-btn-group-block">
+    <mbsc-button (click)="createNewCountry()">Create New Country</mbsc-button>
+    <br>
+    <mbsc-input type="text" name="country" mbsc-select [mbsc-data]="countries" [mbsc-options]="selectOptions" 
+    placeholder="Select A Country" [(ngModel)]="selected" (onSet)="countrySelected($event)"></mbsc-input>
+</div>
+
+<router-outlet></router-outlet>

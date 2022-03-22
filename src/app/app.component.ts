@@ -1,7 +1,9 @@
 import { Component, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { TranslateService } from './translate/translate.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { mobiscroll } from '@mobiscroll/angular'; import { NgForm } from '@angular/forms';
+import { CrossService } from './services/cross.service';
+import { PlacesDBService } from './services/places.dbservice';
 ;
 
 @Component({
@@ -10,6 +12,11 @@ import { mobiscroll } from '@mobiscroll/angular'; import { NgForm } from '@angul
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnDestroy, AfterViewInit {
+
+
+  constructor(public crossService: CrossService){
+
+  }
 
 
   // iconNav = {

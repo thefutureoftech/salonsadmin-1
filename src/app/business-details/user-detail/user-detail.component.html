@@ -1,0 +1,27 @@
+<mbsc-form class="md-create-account" [options]="formSettings">
+  <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)">
+
+      <h3 *ngIf="newMode" style="text-align: center">New Staff</h3>
+
+      <h3 *ngIf="!newMode" style="text-align: center">Edit Staff</h3>
+
+    <div class="md-cac-cont">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="user.name" placeholder="Name"></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="user.arabicName" placeholder="Arabic Name"></mbsc-input>
+      <mbsc-input id="email" name="email" type="email" [(ngModel)]="user.email" placeholder="Email"></mbsc-input>
+      <mbsc-input id="phoneNumber" name="phoneNumber" type="number" [(ngModel)]="user.phoneNumber" placeholder="Phone Number"></mbsc-input>
+      <!-- <mbsc-input id="password" name="password" type="password" [(ngModel)]="user.password" password-toggle="true" minlength="6" placeholder="Password"></mbsc-input> -->
+      <mbsc-input type="number" id="phoneNumber"></mbsc-input>
+    </div>
+    <div class="mbsc-btn-group-justified">
+      <br>
+      <mbsc-button type="submit" color="dark">save</mbsc-button>
+      <mbsc-button type="button" color="dark" (click)="cancel()">cancel</mbsc-button>
+    </div>
+    <!-- <div class="mbsc-btn-group-justified">
+      <br>
+      <button type="submit" style="display: block">Save</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div> -->
+  </form>
+</mbsc-form>

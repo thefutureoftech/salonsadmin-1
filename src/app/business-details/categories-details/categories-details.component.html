@@ -1,0 +1,18 @@
+<mbsc-form [options]="formSettings">
+  <form>
+      <div class="mbsc-form-group">
+        <!-- <div class="mbsc-form-group-title" *ngIf="!newMode" style="text-align: center">{{service.name}}</div> -->
+        <p *ngIf="!newMode"  style="text-align: center">{{service.name}}</p>
+        <p *ngIf="newMode"  style="text-align: center">New Service</p>
+        <mbsc-input  name="name"  type="text" [(ngModel)]="service.name" *ngIf="newMode">Name</mbsc-input>
+        <!-- <mbsc-input id="price" name="price" type="number" placeholder="Price" [(ngModel)]="service.price">Price</mbsc-input> -->
+        <!-- <mbsc-select id="period" [(ngModel)]="service.period" [options]="nonFormSettings" [data]="items" name="period"></mbsc-select> -->
+        <!-- <mbsc-slider [(value)]="service.period" min="15" max="105" step="15" step-labels="[15, 30, 45, 60, 75, 90, 105]">Period</mbsc-slider> -->
+      </div>
+      <div class="mbsc-btn-group-justified">
+        <br>
+        <button type="button" (click)="goBack()" style="display: block">Save</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </div>
+  </form>
+</mbsc-form>

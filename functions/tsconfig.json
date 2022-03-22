@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["es6"],
+    "experimentalDecorators": true,
     "module": "commonjs",
     "noImplicitReturns": true,
+    "noUnusedLocals": false,
     "outDir": "lib",
     "sourceMap": true,
-    "target": "es6"
+    "strict": false,
+    "target": "es2015",
+    "skipLibCheck": true
   },
   "compileOnSave": true,
   "include": [

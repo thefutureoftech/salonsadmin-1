@@ -1,13 +1,14 @@
-import { mobiscroll } from '@mobiscroll/angular/dist/js/mobiscroll.angular.min.js';
-import { Component, OnInit } from '@angular/core';
+import { mobiscroll } from '@mobiscroll/angular';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '../../translate/translate.service';
-import { Subscription } from 'rxjs/Subscription';
-<<<<<<< HEAD
+import { Subscription } from 'rxjs';
 import { LANG_AR_TRANS } from '../../translate/lang-ar';
 import * as langs_trans from '../../translate/langs.trans';
 import { Router, ActivatedRoute } from '@angular/router';
-=======
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+import { CrossService } from '../../services/cross.service';
+import { AuthService } from '../../services/auth.service';
+import { tap, map, take } from 'rxjs/operators';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 
 @Component({
@@ -15,7 +16,17 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+
+  @BlockUI()
+  blockUI: NgBlockUI;
+
+  formSettings = {
+
+    theme: 'ios',
+    lang: 'en'
+
+  }
 
   iconNav = {
     lang: 'ar',
@@ -40,7 +51,6 @@ export class NavbarComponent implements OnInit {
   public translatedText: string;
   public supportedLanguages: any[];
   langSubs: Subscription;
-<<<<<<< HEAD
 
   salonAdminTitle: string;
   createStoreOwnerText: string;
@@ -49,17 +59,21 @@ export class NavbarComponent implements OnInit {
   createCitiesText: string;
   createTownsText: string;
   createBlocksText: string;
+  createBusinessTypeText: string;
 
   showHambMenu: boolean = false;
 
+  showNavigation: boolean;
+  userAuthSub: Subscription;
 
-  constructor(private _translate: TranslateService, private router: Router, 
-              private activeRoute: ActivatedRoute) { }
-=======
-  
+  username: string;
 
-  constructor(private _translate: TranslateService) { }
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+
+  constructor(private _translate: TranslateService, private router: Router,
+    private activeRoute: ActivatedRoute,
+    private crossService: CrossService,
+    private auth: AuthService) { }
+
 
   ngOnInit() {
 
@@ -68,7 +82,6 @@ export class NavbarComponent implements OnInit {
       { display: 'Arabic', value: 'ar' },
     ];
 
-<<<<<<< HEAD
     this._translate.use('en');
 
     this.salonAdminTitle = this._translate.instant(langs_trans.SALON_ADMIN);
@@ -78,17 +91,98 @@ export class NavbarComponent implements OnInit {
     this.createCitiesText = this._translate.instant(langs_trans.CREATE_CITIES_LBL);
     this.createTownsText = this._translate.instant(langs_trans.CREATE_TOWNS_LBL);
     this.createBlocksText = this._translate.instant(langs_trans.CREATE_BLOCK_LBL);
+    this.createBusinessTypeText = this._translate.instant(langs_trans.CREATE_BUSINESS_TYPE);
+
+
+    this.userAuthSub = this.auth.user$.pipe(
+      map(user => { console.log(user); if (user && user.superAdmin) { return true } else { return false } }),
+      tap(isAdmin => {
+
+        console.log('user admin is ' + isAdmin);
+
+        if (!isAdmin) {
+          return false;
+        }
+        else {
+          return true;
+        }
+      })
+    ).subscribe(isAdmin => {
+
+      if (isAdmin) {
+
+        this.showNavigation = true;
+
+        this.auth.getLoggedInUserName().pipe(take(1)).subscribe(user => {
+
+          this.username = user.name;
+
+        });
+
+      }
+      else {
+
+        this.showNavigation = false;
+      }
+
+    });
+
 
   }
 
 
-  navItemTapped(event){
+  navItemTapped(event) {
 
-    if(event.target.id == 'createOwner'){
 
-      this.router.navigate(['owner'], {relativeTo: this.activeRoute});
+    if (event.target.innerText == 'New Store') {
+
+      this.router.navigate(['owner'], { relativeTo: this.activeRoute }).then(result => { console.log(result); })
+      this.crossService.sendFormClearFlag(true);
 
     }
+    else if (event.target.innerText == 'New Branch'){
+
+      this.router.navigate(['owner/ownersearch'], { relativeTo: this.activeRoute }).then(result => { console.log(result); })
+      this.crossService.sendFormClearFlag(true);
+
+    }
+    else if (event.target.innerText == 'Places') {
+      this.router.navigate(['admin']);
+    }
+    else if (event.target.innerText == 'Services') {
+      this.router.navigate(['admin/services']);
+    }
+    else if (event.target.innerText == 'Affiliate') {
+      this.router.navigate(['affiliate']);
+    }
+    else if (event.target.innerText == 'Subscriptions') {
+      this.router.navigate(['subscription']);
+    }
+
+
+  }
+
+  goHome() {
+
+    this.router.navigate(['home']);
+
+  }
+
+
+  logout() {
+
+    this.auth.signOut().then(() => {
+
+      this.router.navigate(['login']);
+
+    });
+
+  }
+
+
+  ngOnDestroy() {
+
+    this.userAuthSub.unsubscribe();
 
   }
 
@@ -112,31 +206,5 @@ export class NavbarComponent implements OnInit {
   // ngOnDestroy() {
   //   this.langSubs.unsubscribe();
   // }
-=======
-    this.selectLang('ar');
-
-  }
-
-    isCurrentLang(lang: string) {
-    return lang === this._translate.currentLang;
-  }
-
-  selectLang(lang: string) {
-    this._translate.use(lang);
-  }
-
-  refreshText() {
-    this.translatedText = this._translate.instant('hello world');
-  }
-
-  subscribeToLangChanged() {
-
-    this.langSubs = this._translate.onLangChanged.subscribe(x => this.refreshText());
-  }
-
-  ngOnDestroy() {
-    this.langSubs.unsubscribe();
-  }
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 
 }

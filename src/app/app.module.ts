@@ -1,17 +1,13 @@
 import { MbscModule } from '@mobiscroll/angular';
-import { FormsModule } from '@angular/forms';
-<<<<<<< HEAD
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, NO_ERRORS_SCHEMA  } from '@angular/core';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-=======
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA  } from '@angular/core';
-import { MDBBootstrapModules } from 'ng-mdb-pro';
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+// import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,37 +20,39 @@ import { ShellModule } from './shell/shell.module';
 import { CommonModule } from '@angular/common';
 import { OwnerModule } from './owner/owner.module';
 import { OwnerdetailsComponent } from './owner/ownerdetails/ownerdetails.component';
-<<<<<<< HEAD
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { CrossService } from './services/cross.service';
+import { UserDBService } from './services/user.dbservice';
+// import { CoreModule } from './core/core.module';
+import { BlockUIModule } from 'ng-block-ui';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
-=======
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
-  imports: [ 
-<<<<<<< HEAD
+  imports: [
+    MbscModule,
+    // CoreModule.forRoot(),
     BrowserAnimationsModule,
+    BrowserModule,
     CommonModule,
     ShellModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
-=======
-    CommonModule,
-    BrowserModule,
+    AngularFireModule,
     FormsModule,
-    ShellModule,
-    AppRoutingModule
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+    AppRoutingModule,
+    HttpClientModule,
+    BlockUIModule.forRoot()
   ],
-  exports: [],
+  providers: [AngularFirestore, NgxImageCompressService],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent]
 })

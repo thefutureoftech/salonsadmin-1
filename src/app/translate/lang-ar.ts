@@ -6,11 +6,10 @@ export const LANG_AR_TRANS = {
     'well done': 'عمل جيد %0',
     'select': 'إختر',
     'Salon Administration': 'إدارة الصالون',
-    'continue_owner_create': 'خطوه واحده فقط لإنشاء حسابك',
+    'continue_owner_create': 'إنشاء مالك جديد',
     'nameText': 'الإسم',
     'emailText': 'البريد الإلكتروني',
     'passwordText': 'كلمة المرور',
-<<<<<<< HEAD
     'phoneText': 'رقم الموبايل',
     'CREATE_COUNTRY_LBL': 'Create Country',
     'CREATE_STATES_LBL': 'Create States',
@@ -19,8 +18,7 @@ export const LANG_AR_TRANS = {
     'CREATE_BUSINESS_TYPE': 'Create Business Type',
     'CREATE_STORE_OWNER': 'Create Store Owner',
     'CREATE_BLOCK_LBL': 'Create Blocks',
-    'CREATE_OWNER_ACCOUNT_LBL': 'Create Owner Account'
-=======
-    'phoneText': 'رقم الموبايل'
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+    'CREATE_OWNER_ACCOUNT_LBL': 'Create Owner Account',
+    'SELECT_BUSINESS_TYPE_LBL': 'Select Bussiness',
+    'SELECT_BUSINESS_NAME_LBL': 'Business Name'
 };

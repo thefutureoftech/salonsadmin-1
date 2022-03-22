@@ -1,0 +1,30 @@
+<mbsc-form [options]="formSettings">
+  <form #frm="ngForm" novalidate>
+
+    <h3 style="text-align: center">User Search</h3>
+
+    <mbsc-input input-style="outline" label-style="floating" (keyup)="search($event)">
+      Search By Phone Number
+    </mbsc-input>
+
+    <mat-spinner *ngIf="startSearch" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+
+    <!-- <div class="mbsc-btn-group-justified"> -->
+
+    <mbsc-note *ngIf="showResult && user" color="info">
+
+      <h3>{{user.name}}</h3>
+
+      <mbsc-button *ngIf="user.affiliate" type="button" color="dark" (click)="makeAffiliate(user.uid, false)">
+        Deactivate Affiliate
+      </mbsc-button>
+
+      <mbsc-button *ngIf="!user.affiliate" type="button" color="dark" (click)="makeAffiliate(user.uid, true)">
+        Activate Affiliate
+      </mbsc-button>
+
+    </mbsc-note>
+
+    <mat-spinner *ngIf="startMaking" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+
+  </form>

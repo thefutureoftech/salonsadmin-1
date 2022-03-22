@@ -1,0 +1,119 @@
+<mbsc-form [options]="formSettings" dir="ltr">
+
+  <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)">
+
+    <!-- <p-table [value]="days">
+    <ng-template pTemplate="header">
+      <tr>
+        <th colspan="1">Day</th>
+        <th colspan="1">From Time</th>
+        <th colspan="1">To Time</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-day let-rowIndex="rowIndex">
+      <tr>
+        <td>
+          <mbsc-checkbox [(ngModel)]="day.daySelected" style="size: 10px;" (click)="checkClicked(rowIndex, fromTime, toTime)">
+            <span>{{day.dayName}}</span>
+          </mbsc-checkbox>
+        </td>
+        <td>
+          <mbsc-input [(ngModel)]="day.fromTime" mbsc-time [mbsc-options]="h12Settings"></mbsc-input>
+        </td>
+        <td>
+          <mbsc-input [(ngModel)]="day.toTime" mbsc-time [mbsc-options]="h12Settings"></mbsc-input>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table> -->
+
+    <div class="md-layout">
+      <div class="mbsc-form-group">
+        <!-- <div class="mbsc-form-group-title"></div> -->
+
+        <div class="md-cac-title mbsc-padding">
+          <p style="text-align: center">Business Hours</p>
+        </div>
+
+        <!-- <mbsc-scrollview [options]="pagingSettings" class="md-pages">
+          <mbsc-scrollview-item>
+            <span style="text-align: center">Day</span>
+          </mbsc-scrollview-item>
+          <mbsc-scrollview-item>
+            <span style="text-align: center">From</span>
+          </mbsc-scrollview-item>
+          <mbsc-scrollview-item>
+            <span style="text-align: center">To</span>
+          </mbsc-scrollview-item>
+          <mbsc-scrollview-item>
+            <span style="text-align: center">From</span>
+          </mbsc-scrollview-item>
+          <mbsc-scrollview-item>
+            <span style="text-align: center">To</span>
+          </mbsc-scrollview-item>
+        </mbsc-scrollview> -->
+
+
+        <table style="width:100%">
+
+          <tr>
+            <th><span style="text-align: center">Day</span></th>
+            <th><span style="text-align: center">From</span></th>
+            <th><span style="text-align: center">To</span></th>
+            <th><span style="text-align: center">From</span></th>
+            <th><span style="text-align: center">To</span></th>
+          </tr>
+
+          <!-- <mbsc-scrollview [options]="pagingSettings" class="md-pages" *ngFor="let day of days; let i = index;" style="width:100%;">
+            <mbsc-scrollview-item> -->
+
+              <tr *ngFor="let day of days; let i = index;" style="width:100%;">
+                <td>
+                  <mbsc-checkbox id="check{{i}}" name="check{{i}}" [value]="day.daySelected" (change)="day.daySelected=!day.daySelected">
+                    <span class="mbsc-desc">{{day.dayName}}</span>
+                  </mbsc-checkbox>
+                </td>
+                  <!-- </mbsc-scrollview-item> -->
+                  <!-- <mbsc-scrollview-item> -->
+                    <td style="width: 25%;">
+                      <mbsc-input id="fromTime{{i}}" name="fromTime{{i}}" [(ngModel)]="day.fromTime" mbsc-time
+                      [mbsc-options]="h12Settings" *ngIf="day.daySelected" required></mbsc-input>
+                    </td>
+                  <!-- </mbsc-scrollview-item> -->
+                  <!-- <mbsc-scrollview-item> -->
+                    <td style="width: 25%;">
+                      <mbsc-input id="toTime{{i}}" name="toTime{{i}}" [(ngModel)]="day.toTime" mbsc-time
+                      [mbsc-options]="h12Settings" style="padding: 5px;" *ngIf="day.daySelected" required></mbsc-input>
+                    </td>
+                  <!-- </mbsc-scrollview-item> -->
+                  <!-- <mbsc-scrollview-item> -->
+                    <td style="width: 25%;">
+                      <mbsc-input id="fromTime{{i}}" name="fromTime2{{i}}" [(ngModel)]="day.fromTime2" mbsc-time
+                      [mbsc-options]="h12Settings" *ngIf="day.daySelected" required></mbsc-input>
+                    </td>
+                  <!-- </mbsc-scrollview-item> -->
+                  <!-- <mbsc-scrollview-item> -->
+                    <td style="width: 25%;">
+                      <mbsc-input id="toTime{{i}}" name="toTime2{{i}}" [(ngModel)]="day.toTime2" mbsc-time
+                      [mbsc-options]="h12Settings" style="padding: 5px;" *ngIf="day.daySelected" required></mbsc-input>
+                    </td>
+              </tr>
+
+            <!-- </mbsc-scrollview-item>
+          </mbsc-scrollview> -->
+
+        </table>
+
+      </div>
+    </div>
+
+    <div class="mbsc-btn-group-justified">
+      <br>
+      <mbsc-button type="button" color="dark" (click)="goBack()">Previous</mbsc-button>
+      <mbsc-button type="submit" color="dark" [disabled]="!frm.valid">Next</mbsc-button>
+    </div>
+
+  </form>
+
+
+</mbsc-form>

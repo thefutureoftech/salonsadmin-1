@@ -1,0 +1,12 @@
+<mbsc-form [options]="formSettings">
+  <div class="mbsc-form-group">
+
+    <p style="text-align: center">Oman Apps Data Adminstration</p>
+    <div class="mbsc-form-group">
+      <mbsc-bottom-nav [options]="iconNav" (onItemTap)="onNavigation($event)">
+        <mbsc-nav-item *ngFor="let header of headers">{{header.name}}</mbsc-nav-item>
+      </mbsc-bottom-nav>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</mbsc-form>

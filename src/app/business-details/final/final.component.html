@@ -1,0 +1,22 @@
+<div *ngIf="!spinning">
+
+  <mbsc-form [options]="formSettings">
+    <form>
+      <br>
+      <br>
+      <div class="mbsc-btn-group-justified">
+        <button type="button" (click)="clearData()" style="display: block">Clear Data/Go Home</button>
+      </div>
+    </form>
+  </mbsc-form>
+
+</div>
+
+
+<!-- <div *ngIf="spinning" class="loader ">
+  <i class="fa fa-5x" style="position:absolute;top:25%;left:50%;">
+    <img src="/assets/126.gif" />
+    <br>
+    <p style="font-size: 20px;color: rgb(7, 6, 6);font-style: bold">Creating...</p>
+  </i>
+</div> -->

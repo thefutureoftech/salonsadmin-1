@@ -1,0 +1,27 @@
+<mbsc-form [options]="formSettings">
+  <form #frm="ngForm" novalidate (ngSubmit)="proceed()">
+
+    <h3 style="text-align: center">Store Owner Search</h3>
+
+    <mbsc-input input-style="outline" label-style="floating" (keyup)="search($event)">
+      Search By Email
+    </mbsc-input>
+
+    <mat-spinner *ngIf="startSearch" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+
+    <!-- <div class="mbsc-btn-group-justified"> -->
+
+    <mbsc-note *ngIf="showResult" color="info">
+      <h3>{{resultString}}</h3>
+    </mbsc-note>
+
+    <div class="mbsc-btn-group-justified">
+      <mbsc-button *ngIf="ownerExist" type="submit" color="dark"
+        [disabled]="frm.invalid && (frm.dirty || frm.touched)">
+        Add a Branch
+      </mbsc-button>
+    </div>
+
+    <mat-spinner *ngIf="startGoing" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+
+  </form>

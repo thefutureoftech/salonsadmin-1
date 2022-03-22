@@ -1,0 +1,114 @@
+<!-- <p-panel header="{{continueToCreateText}}" #pnl> -->
+<mbsc-form class="md-create-account" [options]="formSettings">
+  <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)">
+        <br>
+        <div class="md-cac-title mbsc-padding">
+          <p style="text-align: center">Business Details</p>
+        </div>
+        <div class="md-cac-cont">
+
+          <mbsc-input required [(ngModel)]="store.name" name="name" type="text" placeholder="Business Name" [readonly]="readOnly"></mbsc-input>
+
+          <mbsc-input required [(ngModel)]="store.arabicName" name="arabicName" type="text" placeholder="Business Arabic Name" [readonly]="readOnly"></mbsc-input>
+
+          <div class="mbsc-form-group">
+            <input  type="file" accept="image/*" #file hidden="true" style="display: none" (change)="fileChangeEvent($event)">
+            <mbsc-button type="button" color="dark" (click)="file.click()" [disabled]="readOnly">Select a Logo</mbsc-button>
+          </div>
+
+          <div *ngIf="logoFile" style="text-align: center">
+            <br>
+            <img [src]="logoFile" style="width: 200px; height: 200px;"  name="logo" id="logo">
+          </div>
+
+          <mbsc-input type="text" name="busType" mbsc-select [mbsc-data]="busTypeData" [mbsc-options]="selectOptions" [(ngModel)]="store.busTypeId" required
+            placeholder="Select Business Type" ngModel [disabled]="readOnly"></mbsc-input>
+
+            <mbsc-select #countrySelect="mobiscroll" type="text" name="country" [data]="countries" [options]="selectOptions" [(ngModel)]="store.countryId" required
+            placeholder="Select Country" (onSet)="countrySelected($event)"></mbsc-select>
+
+            <mbsc-input required [(ngModel)]="branch.name" name="branchName" type="text" placeholder="Branch Name" ngModel [(ngModel)]="branch.name"></mbsc-input>
+
+            <mbsc-input required [(ngModel)]="branch.arabicName" name="branchArabicName" type="text" placeholder="Branch Arabic Name" ngModel [(ngModel)]="branch.arabicName"></mbsc-input>
+
+            <mbsc-input type="text" name="buildingNumber"  placeholder="Building Number" [(ngModel)]="branch.address.buildingNumber"></mbsc-input>
+
+            <mbsc-select #stateSelect="mobiscroll" type="text" name="state" [data]="states" [options]="selectOptions2" required
+            placeholder="Select State" [(ngModel)]="branch.address.stateId" (onSet)="stateSelected($event)"></mbsc-select>
+
+            <mbsc-select #citySelect="mobiscroll" type="text" name="city" [data]="cities" [options]="selectOptions3"  required
+            placeholder="Select City" [(ngModel)]="branch.address.cityId" (onSet)="citySelected($event)"></mbsc-select>
+
+            <mbsc-select #townSelect="mobiscroll" type="text" name="town" [data]="towns" [options]="selectOptions4" required
+            placeholder="Select Town" [(ngModel)]="branch.address.townId"></mbsc-select>
+
+            <mbsc-input [(ngModel)]="latitude" name="latitude" type="number" placeholder="Latitude"></mbsc-input>
+
+            <mbsc-input [(ngModel)]="longitude" name="longitude" type="number" placeholder="Longitude"></mbsc-input>
+
+            <div class="mbsc-btn-group-justified">
+                <!-- <button type="button" (click)="getLocation()">Get Location</button> -->
+                <mbsc-button type="button" color="dark" (click)="getLocation()">Get Location</mbsc-button>
+            </div>
+
+        </div>
+        <div class="mbsc-btn-group-justified">
+          <br>
+          <mbsc-button type="button" color="dark" (click)="goBack()">Previous</mbsc-button>
+          <mbsc-button type="submit" color="dark" [disabled]="!frm.valid || !logoFile">Next</mbsc-button>
+        </div>
+  </form>
+</mbsc-form>
+
+
+<!-- <br>
+        <div class="md-cac-title mbsc-padding">
+            <p>{{continueToCreateText}}</p>
+        </div> -->
+<!-- <p-panel header="{{continueToCreateText}}" #pnl #pnl> -->
+<!-- <div class="md-cac-cont">
+            <div>
+                <mbsc-input required ngModel name="name" type="text" placeholder={{nameText}}></mbsc-input>
+                <mbsc-input name="email" type="email" required ngModel placeholder={{emailText}} email></mbsc-input>
+                <mbsc-input name="password" type="password" required ngModel placeholder={{passwordText}} password-toggle="true" minlength="6"></mbsc-input>
+                <mbsc-input type="number" name="numpad" required ngModel placeholder={{phoneText}}></mbsc-input>
+                <mbsc-input type="text" name="busType" mbsc-select [mbsc-data]="busTypeData" [mbsc-options]="selectOptions" ngModel required
+                    placeholder={{selectBusinessTypeText}}></mbsc-input>
+                <mbsc-input required ngModel name="busName" type="text" placeholder={{busNameText}}></mbsc-input>
+                <div class="md-cac-btn mbsc-form-group-inset">
+                    <mbsc-button type="submit" [disabled]="!frm.valid">{{createOwnerAccountText}}</mbsc-button>
+                </div>
+            </div>
+        </div> -->
+<!-- </p-panel> -->
+<!-- </form>
+</mbsc-form> -->
+<!-- </p-panel> -->
+
+<!-- <div class="md-cac-btn mbsc-form-group-inset mbsc-btn-group-block" *ngIf="ownerCreatedText">
+    <button pButton type="button" label={{ownerCreatedText}} class="ui-button-success"></button>
+</div> -->
+
+
+<!-- <div class="center">
+        <p-progressSpinner *ngIf="spinning"></p-progressSpinner>
+</div> -->
+<!-- <p-blockUI [blocked]="!spinning" [target]="pnl">
+        <i class="fa fa-5x" style="position:absolute;top:25%;left:50%;">
+            <img src="/assets/126.gif" />
+            <br>
+            <p style="font-size: 20px;color: rgb(7, 7, 7);font-style: bold">Creating...</p>
+        </i>
+    </p-blockUI> -->
+
+<!-- <div class="loader ">
+  <i class="fa fa-5x" style="position:absolute;top:25%;left:50%;">
+    <img src="/assets/126.gif" />
+    <br>
+    <p style="font-size: 20px;color: rgb(7, 6, 6);font-style: bold">Creating...</p>
+  </i>
+</div> -->
+
+
+
+<!-- <div class="md-chart-pic"></div>  -->

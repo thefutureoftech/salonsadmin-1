@@ -1,0 +1,91 @@
+<!-- <div *ngIf="servicesVisible"> -->
+
+  <mbsc-form [options]="formSettings" dir="ltr" *ngIf="!activateTab">
+
+    <!-- <div class="mbsc-form-group"> -->
+
+    <h3 style="text-align: center">Services</h3>
+    <br>
+
+    <!-- <div class="ui-g ui-fluid">
+      <p-tree #expandingTree [value]="services">
+        <ng-template let-node pTemplate="last">
+          <p-table [value]="node.data" autoLayout="true">
+            <ng-template pTemplate="header">
+              <tr>
+                <th></th>
+                <th>Service</th>
+                <th>Price</th>
+                <th>Time (Minutes)</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-child>
+              <tr>
+                <td>
+                  <input type="checkbox" name="select" [(ngModel)]="child.selected" color="primary">
+                </td>
+                <td>
+                  <span>{{child.name}}</span>
+                </td>
+                <td>
+                  <input [(ngModel)]="child.price" type="text" style="max-width:50px; text-align: center">
+                </td>
+                <td style="max-width:50px;">
+                  <input mbsc-select [(ngModel)]="child.period" [mbsc-options]="nonFormSettings" [mbsc-data]="items" style="max-width:50px;"/>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </ng-template>
+      </p-tree>
+    </div> -->
+
+
+    <!-- <mbsc-listview [options]="listviewSettings" (onNavEnd)="onEndNav($event)" (onItemTap)="onTap($event)"> -->
+    <!-- <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)"> -->
+
+    <mbsc-listview [options]="listviewSettings" (onItemTap)="onTap($event)">
+      <mbsc-listview-item *ngFor="let category of services2; let i1 = index;">
+        <span class="mbsc-ic mbsc-ic-folder"></span>
+        {{category.label}}
+        <mbsc-listview-sublist>
+          <mbsc-listview-header>
+            <span style="font-size: 16px">{{category.label}}</span>
+          </mbsc-listview-header>
+          <mbsc-listview-item *ngFor="let subcategory of category.children; let i2=index;" [id]="subcategory.label">
+            <span class="mbsc-ic mbsc-ic-folder"></span>
+            {{subcategory.label}}
+            <mbsc-listview-sublist>
+              <mbsc-listview-header>
+                <span style="font-size: 16px">{{category.label}} >> {{subcategory .label}}</span>
+                <mbsc-button flat (click)="newService(i1, i2)">
+                  <span class="mbsc-ic mbsc-ic-aid" style="font-size: 16px"> Add</span>
+                </mbsc-button>
+              </mbsc-listview-header>
+              <mbsc-listview-item *ngFor="let last of subcategory.children; let i3=index;" [id]="last.name">
+                <mbsc-checkbox [(ngModel)]="last.selected" color="secondary">
+                  <span>{{last.name}}</span>
+                </mbsc-checkbox>
+                <mbsc-button flat (click)="lastNodeClicked(last, i1, i2, i3)" *ngIf="last.selected">Edit</mbsc-button>
+              </mbsc-listview-item>
+            </mbsc-listview-sublist>
+          </mbsc-listview-item>
+        </mbsc-listview-sublist>
+      </mbsc-listview-item>
+    </mbsc-listview>
+
+    <div class="mbsc-btn-group-justified">
+      <button type="button" (click)="goBack()" style="display: block">Previous</button>
+      <button type="button" (click)="proceed()">Next</button>
+    </div>
+
+    <!-- </form> -->
+
+    <!-- </div>  -->
+
+  </mbsc-form>
+
+<!-- </div> -->
+
+
+<router-outlet *ngIf="activateTab"></router-outlet>

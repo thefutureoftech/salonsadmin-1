@@ -1,0 +1,10 @@
+<div class="mbsc-btn-group-block" *ngIf="stateSelected">
+  <mbsc-button (click)="createNewCity()">Create New City</mbsc-button>
+  <br>
+  <mbsc-input type="text" name="city" mbsc-select [mbsc-data]="cities" [mbsc-options]="selectOptions" 
+  placeholder="Select A City" [(ngModel)]="selected" (onSet)="citySelected($event)"></mbsc-input>
+</div>
+
+<router-outlet *ngIf="displaySelected"></router-outlet>
+
+<p *ngIf="!stateSelected">Please make a selection for state first!!</p>

@@ -1,0 +1,308 @@
+<mbsc-form [options]="formSettings">
+  <form #frm="ngForm" novalidate>
+
+    <h3 style="text-align: center">Subscriptions</h3>
+
+    <div style="text-align: center;">
+      <button mat-mini-fab color="dark" (click)="showPopUp(subscriptionPricingPopup)">
+        <mat-icon>attach_money</mat-icon>
+      </button>
+    </div>
+
+    <div class="mbsc-btn-group-block">
+      <mbsc-button type="button" color="dark" (click)="getDashboardData()">
+        Get Dashboard Data
+      </mbsc-button>
+    </div>
+
+    <!-- <div class="mbsc-btn-group-block">
+      <mbsc-button type="button" color="dark" (click)="getDashboardData22   ()">
+        Get Dashboard Data 22
+      </mbsc-button>
+    </div> -->
+
+    <mat-spinner *ngIf="startSearch" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+
+    <div class="mbsc-grid mbsc-grid-fixed" *ngIf="Dashboard && !startSearch">
+      <div class="mbsc-row mbsc-justify-content-center">
+        <div class="mbsc-col-md-10 mbsc-col-xl-9">
+
+          <div class="mbsc-row">
+            <div class="mbsc-col-6">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 160px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Salons</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.Dashboard?.branchesNumber}}</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+            <div class="mbsc-col-6">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 160px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Monthly Salons</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.Dashboard?.monthlyBranches}}</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+            <div class="mbsc-col-6">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 160px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Yearly Salons</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.Dashboard?.yearlyBranches}}</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+            <div class="mbsc-col-6">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 160px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Active Salons</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.Dashboard?.activeBranches}}</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mbsc-grid mbsc-grid-fixed">
+      <div class="mbsc-row mbsc-justify-content-center">
+        <div class="mbsc-col-md-10 mbsc-col-xl-9">
+
+          <div class="mbsc-row">
+            <div class="mbsc-col-12">
+              <div>
+                <h3 style="text-align: center">Salons</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="mbsc-row">
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-select name="searchOption" [(ngModel)]="selectedSearch" [options]="selectOptions" [data]="searchOptionData" input-style="box">Search Option</mbsc-select>
+              </div>
+            </div>
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input name="searchValue" type="text" [(ngModel)]="searchValue" *ngIf="selectedSearch === '1' ">
+                  Search By Owner Email
+                </mbsc-input>
+                <mbsc-input name="searchValue" type="text" [(ngModel)]="searchValue" *ngIf="selectedSearch === '2' ">
+                  Search By Branch Name
+                </mbsc-input>
+              </div>
+            </div>
+            <div class="mbsc-col-12">
+              <div>
+                <div class="mbsc-btn-group-block">
+                  <mbsc-button type="button" color="dark" (click)="getBranchesSubscriptions()">
+                    Get Owner Salons
+                  </mbsc-button>
+                </div>
+              </div>
+              <div style="margin-top: 10px;">
+                <mat-spinner *ngIf="startSearch2" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+              </div>
+            </div>
+          </div>
+
+          <div class="mbsc-row">
+            <div class="mbsc-col-12">
+              <div>
+
+                <p-table [value]="this.branchesSubscriptions" *ngIf="this.branchesSubscriptions && !startSearch2" [resizableColumns]="true" [autoLayout]="true" responsiveLayout="scroll">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Owner Name</th>
+                      <th>Phone Number</th>
+                      <th>Salon Name</th>
+                      <th>Email</th>
+                      <th>Salon ID</th>
+                      <th>Active?</th>
+                      <th>Subscription Valid Date</th>
+                      <th style="width: 8rem"></th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-subscription>
+                    <tr>
+                      <td>{{subscription.ownerName}}</td>
+                      <td>{{subscription.ownerPhoneNumber}}</td>
+                      <td>{{subscription.branchData.name}}</td>
+                      <td>{{subscription.ownerEmail}}</td>
+                      <td>{{subscription.branchData.id}}</td>
+                      <td>{{subscription.branchData.active}}</td>
+                      <td *ngIf="subscription.invoice">{{subscription.invoice.nextPaymentDate.getDate()}}/{{subscription.invoice.nextPaymentDate.getMonth() + 1}}/{{subscription.invoice.nextPaymentDate.getFullYear()}}</td>
+                      <td *ngIf="!subscription.invoice"></td>
+                      <td style="text-align: center">
+                        <mbsc-button flat icon="fa-edit" (click)="editSignUpForm(subscription)"></mbsc-button>
+                    </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="mbsc-row" *ngIf="singleSubscription">
+
+            <div class="mbsc-col-12">
+              <div>
+                <h3 style="text-align: center">Edit Sign Up Details</h3>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input name="ownerEmail" type="text" [(ngModel)]="singleSubscription.ownerEmail">
+                 Owner Email
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input name="ownerPhoneNumber" type="text" [(ngModel)]="singleSubscription.ownerPhoneNumber">
+                 Owner Phone Number
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input name="branchName" type="text" [(ngModel)]="singleSubscription.branchData.name">
+                  Branch Name
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input name="branchArabicName" type="text" [(ngModel)]="singleSubscription.branchData.arabicName">
+                  Branch Arabic Name
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-select type="text" name="country" [data]="countries" [options]="selectOptions" [(ngModel)]="this.singleSubscription.branchData.address.countryId"
+                required placeholder="Select Country" (onSet)="countrySelected($event)"></mbsc-select>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-select type="text" name="state" [data]="filteredStates" [options]="selectOptions" [(ngModel)]="this.singleSubscription.branchData.address.stateId"
+                required placeholder="Select State" (onSet)="stateSelected($event)"></mbsc-select>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-select type="text" name="city" [data]="filteredCities" [options]="selectOptions" [(ngModel)]="this.singleSubscription.branchData.address.cityId"
+                required placeholder="Select City" (onSet)="citySelected($event)"></mbsc-select>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-select type="text" name="town" [data]="filteredTowns" [options]="selectOptions" [(ngModel)]="this.singleSubscription.branchData.address.townId"
+                required placeholder="Select Town"></mbsc-select>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-switch name="activeMember" [(ngModel)]="this.singleSubscription.branchData.active" (change)="toggleActive()"><span class="mbsc-desc">Branch Active ?</span></mbsc-switch>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-select type="text" name="town" [data]="subscriptionPackagesData" [options]="selectOptions" [(ngModel)]="this.selectedPackage">Select Renewal Package</mbsc-select>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div class="mbsc-btn-group-block">
+                <mbsc-button type="button" color="dark" (click)="saveSignUpForm()">
+                  Save
+                </mbsc-button>
+              </div>
+              <mat-spinner *ngIf="startSearch3" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+              <br><br>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div class="mbsc-btn-group-block">
+                <mbsc-button type="button" color="dark" (click)="saveAndRenew()">
+                  Save & Renew
+                </mbsc-button>
+              </div>
+              <mat-spinner *ngIf="startSearch4" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+              <br><br>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <mbsc-popup [options]="popUpSettings" #subscriptionPricingPopup="mobiscroll">
+      <mbsc-form [options]="formSettings">
+        <form #frm="ngForm" novalidate>
+
+          <h3 style="text-align: center">Subscription Pricing Plan</h3>
+
+          <mbsc-form-group inset>
+            <mbsc-form-group-title>Free Period Data</mbsc-form-group-title>
+            <mbsc-switch name="activeFreePeriod" [(ngModel)]="this.planPricingData?.freePeriod.active" (change)="toggleActive()"><span class="mbsc-desc">Free Period Active ?</span></mbsc-switch>
+            <mbsc-input name="DaysInMonthFreePeriod" type="number" [(ngModel)]="this.planPricingData?.freePeriod.days">Number of Days in a month</mbsc-input>
+            <mbsc-input name="monthsFreePeriod" type="number" [(ngModel)]="this.planPricingData?.freePeriod.period">Number of Months</mbsc-input>
+            <mbsc-date name="fromDateFreePeriod" [(ngModel)]="this.planPricingData?.freePeriod.from_date" [options]="dateSettings" placeholder="Please Select...">Start Date</mbsc-date>
+            <mbsc-date name="toDateFreePeriod" [(ngModel)]="this.planPricingData?.freePeriod.to_date" [options]="dateSettings" placeholder="Please Select...">End Date</mbsc-date>
+          </mbsc-form-group>
+
+          <mbsc-form-group inset>
+            <mbsc-form-group-title>First Package Data</mbsc-form-group-title>
+            <mbsc-input name="card1AffiliateDiscount" type="number" [(ngModel)]="this.planPricingData?.package1.affiliate_discount">Affiliate Discount</mbsc-input>
+            <mbsc-input name="card1Currency" type="text" [(ngModel)]="this.planPricingData?.package1.currency">Currency</mbsc-input>
+            <mbsc-input name="DaysInPackageOne" type="number" [(ngModel)]="this.planPricingData?.package1.days">Number of Days in a month</mbsc-input>
+            <mbsc-input name="monthsPackageOne" type="number" [(ngModel)]="this.planPricingData?.package1.period">Number of Months</mbsc-input>
+            <mbsc-input name="pricePackageOne" type="number" [(ngModel)]="this.planPricingData?.package1.price">Price</mbsc-input>
+          </mbsc-form-group>
+
+          <mbsc-form-group inset>
+            <mbsc-form-group-title>Second Package Data</mbsc-form-group-title>
+            <mbsc-input name="card2AffiliateDiscount" type="tel" [(ngModel)]="this.planPricingData?.package2.affiliate_discount">Affiliate Discount</mbsc-input>
+            <mbsc-input name="card2Currency" type="text" [(ngModel)]="this.planPricingData?.package2.currency">Currency</mbsc-input>
+            <mbsc-input name="DaysInPackageTwo" type="number" [(ngModel)]="this.planPricingData?.package2.days">Number of Days in a month</mbsc-input>
+            <mbsc-input name="monthsPackageTwo" type="number" [(ngModel)]="this.planPricingData?.package2.period">Number of Months</mbsc-input>
+            <mbsc-input name="pricePackageTwo" type="number" [(ngModel)]="this.planPricingData?.package2.price">Price</mbsc-input>
+          </mbsc-form-group>
+
+        </form>
+      </mbsc-form>
+    </mbsc-popup>
+
+  </form>
+</mbsc-form>
+
+
+
+
+
+

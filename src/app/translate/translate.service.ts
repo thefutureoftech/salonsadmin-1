@@ -1,4 +1,4 @@
-import {Injectable, Inject, transition, EventEmitter} from '@angular/core';
+import {Injectable, Inject, EventEmitter} from '@angular/core';
 import { TRANSLATIONS } from './translation'; // import our opaque token
 
 @Injectable()
@@ -48,7 +48,7 @@ export class TranslateService {
         values.forEach((e, i) => {
             translation = translation.replace(this.PLACEHOLDER.concat(<any>i), e);
         });
-    
+
         return translation;
 
     }

@@ -1,0 +1,34 @@
+<mbsc-form [options]="formSettings" *ngIf="!activateTab">
+  <form>
+    <h3 style="text-align: center">Staff</h3>
+    <br>
+    <div>
+      <div class="md-hamb" style="text-align: center">
+        <mbsc-hamburger-nav (onItemTap)="navItemTapped($event)">
+          <mbsc-nav-item id="addEmployee" data-icon="plus">
+            Add Employee
+          </mbsc-nav-item>
+        </mbsc-hamburger-nav>
+      </div>
+
+      <mbsc-listview [options]="listviewSettings">
+        <mbsc-listview-item *ngFor="let item of data">
+          <div class="md-wo-status">{{item.name}}</div>
+        </mbsc-listview-item>
+      </mbsc-listview>
+
+    </div>
+
+    <div class="mbsc-btn-group-justified">
+      <br>
+      <!-- <button type="button" style="display: block" (click)="goBack()">Previous</button>
+      <button type="button" (click)="showConfirm()">Submit</button> -->
+      <mbsc-button type="button" color="dark" (click)="goBack()">Previous</mbsc-button>
+      <mbsc-button type="button" color="dark" (click)="showConfirm()">Next</mbsc-button>
+    </div>
+
+  </form>
+
+</mbsc-form>
+
+<router-outlet *ngIf="activateTab"></router-outlet>

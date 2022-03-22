@@ -1,0 +1,19 @@
+<mbsc-form class="md-login-form" [options]="formSettings" *ngIf="showLogin">
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="logIn()">
+        <!-- <div class="md-logo micons icon-mbsc-logo"></div> -->
+        <div class="mbsc-form-group-inset">
+            <mbsc-input formControlName="email" name="Email" placeholder="Email" [error]="loginForm.controls.email.invalid && loginForm.controls.email.dirty" [errorMessage]="errorFor('email')"></mbsc-input>
+            <mbsc-input formControlName="password" name="password" type="text" placeholder="Password" password-toggle="true" icon="none" icon-align="right" [error]="loginForm.controls.password.invalid && loginForm.controls.password.dirty" [errorMessage]="errorFor('password')"></mbsc-input>
+        </div>
+        <div class="mbsc-form-group-inset mbsc-padding mbsc-align-center">
+            <!-- <a  *ngIf="isLogin" (click)="isLogin = false">Don't have an account yet? Sign up.</a>
+            <a  *ngIf="!isLogin" (click)="isLogin = true">Already have an account?</a> -->
+            <br><br>
+            <a>Forgot password?</a>
+        </div>
+        <div class="mbsc-form-group-inset mbsc-padding">
+            <mbsc-button block *ngIf="!isLogin" type="submit" [disabled]="loginForm.invalid && attemptedSubmit">Sign in</mbsc-button>
+            <!-- <mbsc-button block *ngIf="!isLogin" [disabled]="loginForm.invalid && attemptedSubmit" (click)="signUp()">Sign up</mbsc-button> -->
+        </div>
+    </form>
+</mbsc-form>

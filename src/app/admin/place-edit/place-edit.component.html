@@ -1,0 +1,37 @@
+<mbsc-form class="md-create-account" [options]="formSettings">
+  <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)">
+
+    <h3 *ngIf="!editMode" style="text-align: center">New {{type}}</h3>
+
+    <h3 *ngIf="editMode" style="text-align: center">Edit {{type}}</h3>
+
+    <div class="md-cac-cont" *ngIf="type === 'Country'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="country.name" placeholder="Name" required></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="country.arabicName" placeholder="Arabic Name" required></mbsc-input>
+      <mbsc-input id="code" name="code" type="text" [(ngModel)]="country.code" placeholder="Country Code"></mbsc-input>
+      <mbsc-input id="currency" name="currency" type="text" [(ngModel)]="country.currency" placeholder="Country Currency"></mbsc-input>
+      <mbsc-input type="number" name="rate" id="rate" [(ngModel)]="country.exRate" placeholder="Country Rate"></mbsc-input>
+    </div>
+
+    <div class="md-cac-cont" *ngIf="type === 'State'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="state.name" placeholder="Name" required></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="state.arabicName" placeholder="Arabic Name" required></mbsc-input>
+    </div>
+
+    <div class="md-cac-cont" *ngIf="type === 'City'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="city.name" placeholder="Name" required></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="city.arabicName" placeholder="Arabic Name" required></mbsc-input>
+    </div>
+
+    <div class="md-cac-cont" *ngIf="type === 'Town'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="town.name" placeholder="Name" required></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="town.arabicName" placeholder="Arabic Name" required></mbsc-input>
+    </div>
+
+    <div class="mbsc-btn-group-justified">
+      <br>
+      <button type="submit" style="display: block" [disabled]="!frm.valid">Save</button>
+      <button type="button" (click)="cancelOrDelete()">{{cancelDelete}}</button>
+    </div>
+  </form>
+</mbsc-form>

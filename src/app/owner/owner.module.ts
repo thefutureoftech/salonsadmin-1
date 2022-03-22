@@ -4,28 +4,29 @@ import { CommonModule } from '@angular/common';
 import { OwnerRoutingModule } from './owner-routing.module';
 import { OwnerdetailsComponent } from './ownerdetails/ownerdetails.component';
 import { MbscModule } from '@mobiscroll/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShellModule } from '../shell/shell.module';
-<<<<<<< HEAD
-=======
-import { BrowserModule } from '@angular/platform-browser';
-import { MDBBootstrapModules } from 'ng-mdb-pro';
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+// import { BrowserModule } from '@angular/platform-browser';
+import { CrossService } from '../services/cross.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OwnersearchComponent } from './ownersearch/ownersearch.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     OwnerRoutingModule,
-<<<<<<< HEAD
     FormsModule,
-=======
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+    MatProgressSpinnerModule,
     ShellModule
   ],
   exports: [OwnerRoutingModule],
   declarations: [
-    OwnerdetailsComponent
+    OwnerdetailsComponent,
+    OwnersearchComponent
   ],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

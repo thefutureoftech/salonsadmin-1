@@ -1,0 +1,75 @@
+<mbsc-form [options]="formSettings">
+  <form #frm="ngForm" novalidate>
+
+    <h3 style="text-align: center">Store Owner Search</h3>
+
+    <div class="mbsc-btn-group-block">
+      <mbsc-button type="button" color="dark" (click)="getDashboardData()">
+        Get Dashboard Data
+      </mbsc-button>
+    </div>
+
+    <mat-spinner *ngIf="startSearch" style="margin:0 auto;" [diameter]="40"></mat-spinner>
+
+    <div class="mbsc-grid mbsc-grid-fixed" *ngIf="dashbaord && !startSearch">
+      <div class="mbsc-row mbsc-justify-content-center">
+        <div class="mbsc-col-md-10 mbsc-col-xl-9">
+
+          <div class="mbsc-row">
+            <div class="mbsc-col-6">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 180px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Total Paid</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.dashbaord?.tottalPaid}} OMR</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+            <div class="mbsc-col-6">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 180px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Total Ready To Pay</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.dashbaord?.totalRedaToPay}} OMR</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-card [options]="cardSettings" style="min-height: 120px; overflow-y: auto; height: 100%;">
+                  <mbsc-card-header>
+                    <mbsc-card-title style="text-align: center;">Total Commissions</mbsc-card-title>
+                    <h4 style="margin-top: 15px; text-align: center;">{{this.dashbaord?.totalCommission}} OMR</h4>
+                  </mbsc-card-header>
+                </mbsc-card>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <p-table [value]="dashbaord.topAffiliates" *ngIf="dashbaord && !startSearch" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>Earning</th>
+          <th>Currency</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-affiliate>
+        <tr>
+          <td>{{affiliate.userName}}</td>
+          <td>{{affiliate.phoneNumber}}</td>
+          <td>{{affiliate.earning}}</td>
+          <td>{{affiliate.currency}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </form>
+</mbsc-form>

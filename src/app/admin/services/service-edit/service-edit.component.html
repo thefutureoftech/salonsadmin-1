@@ -1,0 +1,40 @@
+<mbsc-form class="md-create-account" [options]="formSettings">
+  <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)">
+
+    <h3 *ngIf="!editMode" style="text-align: center">New {{type}}</h3>
+
+    <h3 *ngIf="editMode" style="text-align: center">Edit {{type}}</h3>
+
+    <div class="md-cac-cont" *ngIf="type === 'Category'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="category.name" placeholder="Name" required minlength="1"></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="category.arabicName" placeholder="Arabic Name"
+        required></mbsc-input>
+      <mbsc-input type="text" name="busType" mbsc-select [mbsc-data]="busTypeData" [mbsc-options]="selectOptions"
+        [(ngModel)]="category.busType" required placeholder="Select Business Type" ngModel (onSet)="businessTypeSelected($event)"></mbsc-input>
+        <mbsc-input type="file"name="image" (change)="onFileChange($event)" placeholder="{{uploadImageString}}" accept="image/png, image/x-icon, image/bmp, image/jpeg">{{uploadImageString}}</mbsc-input>
+        <img [src]="this.category.imageURL" alt="" width="100" height="100">
+    </div>
+
+    <!-- <div class="md-cac-cont" *ngIf="type === 'SubCategory'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="subCategory.name" placeholder="Name" required></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="subCategory.arabicName" placeholder="Arabic Name" required></mbsc-input>
+    </div> -->
+
+    <div class="md-cac-cont" *ngIf="type === 'Service'">
+      <mbsc-input id="name" name="name" type="text" [(ngModel)]="service.name" placeholder="Name" required></mbsc-input>
+      <mbsc-input id="arabicName" name="arabicName" type="text" [(ngModel)]="service.arabicName" placeholder="Arabic Name"
+        required></mbsc-input>
+      <mbsc-input type="text" name="busType" mbsc-select [mbsc-data]="busTypeData" [mbsc-options]="selectOptions"
+        [(ngModel)]="service.busType" required placeholder="Select Business Type" ngModel (onSet)="businessTypeSelected($event)"></mbsc-input>
+      <!-- <mbsc-input type="number" name="period"  placeholder="Period in Minues" [(ngModel)]="service.period" required></mbsc-input>
+      <mbsc-input type="number" name="price"  placeholder="Price in Riyals" [(ngModel)]="service.price" required></mbsc-input>
+      <mbsc-checkbox [(ngModel)]="service.selected" name="selected" ><span class="mbsc-desc">Selected</span></mbsc-checkbox> -->
+    </div>
+
+    <div class="mbsc-btn-group-justified">
+      <br>
+      <button type="submit" style="display: block" [disabled]="!frm.valid||formInvalid">Save</button>
+      <button type="button" (click)="cancelOrDelete()">{{cancelDelete}}</button>
+    </div>
+  </form>
+</mbsc-form>

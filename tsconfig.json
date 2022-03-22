@@ -1,25 +1,28 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
+    "esModuleInterop": true,
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
-    ]
-<<<<<<< HEAD
-  }
-  // "include": ["node_modules/ng-mdb-pro/**/*.ts",  "src/**/*.ts"]
-=======
+    ],
+    "module": "es2020",
+    "baseUrl": "./"
   },
-  "include": ["node_modules/ng-mdb-pro/**/*.ts",  "src/**/*.ts"]
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+  "angularCompilerOptions": {
+    // ...
+    "disableTypeScriptVersionCheck": true
+  }
 }

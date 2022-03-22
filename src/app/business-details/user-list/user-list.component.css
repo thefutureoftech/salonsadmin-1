@@ -1,0 +1,7 @@
+.mat-button.mat-fab.mat-fab-bottom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed;
+    }

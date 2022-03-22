@@ -1,0 +1,8 @@
+<div class="mbsc-btn-group-block">
+  <mbsc-button (click)="createNewCategory()">Create New Category</mbsc-button>
+  <br>
+  <mbsc-input type="text" name="category" mbsc-select [mbsc-data]="categories" [mbsc-options]="selectOptions" 
+  placeholder="Select A Category" [(ngModel)]="selected" (onSet)="categorySelected($event)"></mbsc-input>
+</div>
+
+<router-outlet></router-outlet>

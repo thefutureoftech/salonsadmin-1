@@ -1,0 +1,97 @@
+<mbsc-form [options]="formSettings">
+
+  <form #frm="ngForm" novalidate>
+
+    <div class="mbsc-grid mbsc-grid-fixed">
+      <div class="mbsc-row mbsc-justify-content-center">
+        <div class="mbsc-col-md-10 mbsc-col-xl-9">
+
+          <h4 style="text-align: center;" *ngIf="this.listType === 'requests'">Edit Affiliate Request</h4>
+
+          <h4 style="text-align: center;" *ngIf="this.listType === 'members'">Edit Affiliate Member</h4>
+
+          <div class="mbsc-row">
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="text" name="name" [(ngModel)]="this.data[0].userName"
+                  required> User Name
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="text" name="arabicName" [(ngModel)]="this.data[0].userArabicName"
+                   required> User Arabic Name
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="number" name="readyAmount" [(ngModel)]="this.data[0].readyToPayAmount">
+                  Ready To Pay Amount
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="number" name="totalAmount" [(ngModel)]="this.data[0].totalPaidAmount">
+                  Total Paid Amount
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="text" name="currency" [(ngModel)]="this.data[0].currency"
+                   required> Currency
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="text" name="bankName" [(ngModel)]="this.data[0].BankName"
+                   required> Bank Name
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-12">
+              <div>
+                <mbsc-input type="number" name="accountNumber" [(ngModel)]="this.data[0].accountNumber">
+                  Bank Account Number
+                </mbsc-input>
+              </div>
+            </div>
+
+            <div class="mbsc-col-md-12 mbsc-col-12" *ngIf="listType === 'members'">
+              <div>
+                <mbsc-switch name="activeMember" [(ngModel)]="this.data[0].active" (change)="toggleActive()">Active Member</mbsc-switch>
+              </div>
+            </div>
+
+            <div class="mbsc-col-md-12 mbsc-col-12" *ngIf="listType === 'requests'">
+              <div class="mbsc-btn-group-block">
+                <mbsc-button type="button" (click)="transferMoney()" color="dark">Transfer Done</mbsc-button>
+              </div>
+            </div>
+
+            <div class="mbsc-col-md-12 mbsc-col-12" *ngIf="listType === 'members'">
+              <div class="mbsc-btn-group-block">
+                <mbsc-button type="button" (click)="saveAffiliate()" color="dark">Save</mbsc-button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</mbsc-form>

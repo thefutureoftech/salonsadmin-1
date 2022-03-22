@@ -1,0 +1,27 @@
+<mbsc-form [options]="formSettings">
+  <form>
+    <h3 style="text-align: center" *ngIf="listType === 'members'">Affiliate Members</h3>
+    <h3 style="text-align: center" *ngIf="listType === 'requests'">Affiliate Requests</h3>
+    <br>
+    <div>
+      <div class="md-hamb" style="text-align: center" *ngIf="this.listType==='members'">
+        <mbsc-hamburger-nav (onItemTap)="navItemTapped($event)">
+          <mbsc-nav-item id="addEmployee" data-icon="plus">
+            Add Member
+          </mbsc-nav-item>
+        </mbsc-hamburger-nav>
+      </div>
+
+      <mbsc-listview #myList="mobiscroll" (onItemTap)="editAffiliate($event)">
+        <mbsc-listview-item *ngFor="let item of data" [id]="item.id">
+          <div>{{item?.userName}} {{item?.phoneNumber}}
+            <span *ngIf="item.active && listType === 'members'">🌝</span>
+            <span *ngIf="!item.active && listType === 'members'">🌚</span></div>
+        </mbsc-listview-item>
+      </mbsc-listview>
+
+    </div>
+
+  </form>
+
+</mbsc-form>

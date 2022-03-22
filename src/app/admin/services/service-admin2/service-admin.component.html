@@ -1,0 +1,10 @@
+<div class="mbsc-btn-group-block" *ngIf="categorySelected">
+    <mbsc-button (click)="createNewService()">Create New Service</mbsc-button>
+    <br>
+    <mbsc-input type="text" name="service" mbsc-select [mbsc-data]="services" [mbsc-options]="selectOptions" 
+    placeholder="Select A Service" [(ngModel)]="selected" (onSet)="serviceSelected($event)"></mbsc-input>
+  </div>
+  
+  <router-outlet *ngIf="displaySelected"></router-outlet>
+  
+  <p *ngIf="!categorySelected">Please make a selection for a SubCategory first!!</p>

@@ -1,50 +1,74 @@
 <mbsc-form class="md-create-account" [options]="formSettings">
-<<<<<<< HEAD
-    <form #frm="ngForm" novalidate (ngSubmit)="createOwner(frm)">
+    <form #frm="ngForm" novalidate (ngSubmit)="proceed(frm)">
+                <br *ngIf="!ownerCreatedText">
+                <div class="md-cac-title mbsc-padding" *ngIf="!ownerCreatedText">
+                    <p>{{continueToCreateText}}</p>
+                </div>
+                <div class="md-cac-cont" *ngIf="!ownerCreatedText">
+                    <mbsc-input  id="name" name="name" type="text" placeholder={{nameText}} [(ngModel)]="user.name" required></mbsc-input>
+                    <mbsc-input  id="arabicName" name="arabicName" type="text" placeholder="arabic Name" [(ngModel)]="user.arabicName" required></mbsc-input>
+                    <mbsc-input id="email" name="email" type="email" placeholder={{emailText}} email [(ngModel)]="user.email"></mbsc-input>
+                    <!-- <mbsc-input id="password" name="password" type="password"  placeholder={{passwordText}} password-toggle="true" minlength="6" [(ngModel)]="user.password"></mbsc-input> -->
+                    <mbsc-input type="number" id="phoneNumber" name="phoneNumber"  placeholder={{phoneText}} [(ngModel)]="user.phoneNumber" required></mbsc-input>
+                    <mbsc-checkbox [value]="isOwnerStaff" name="ownerStaff" id="ownerStaff" (change)="isOwnerStaff = !isOwnerStaff"><span class="mbsc-desc">Owner is a staff?</span></mbsc-checkbox>
+                </div>
 
-        <br>
-        <div class="md-cac-title mbsc-padding">
-            <p>{{ 'continue_owner_create' | translate}}</p>
-        </div>
-        <div class="md-cac-cont">
-            <div *ngIf="!ownerCreatedText">
-                <mbsc-input required ngModel name="name" type="text" placeholder={{nameText}}></mbsc-input>
-                <mbsc-input name="email" type="email" required ngModel placeholder={{emailText}}></mbsc-input>
-                <mbsc-input name="password" type="password" required ngModel placeholder={{passwordText}} password-toggle="true"></mbsc-input>
-                <mbsc-input type="number" name="numpad" required ngModel placeholder={{phoneText}}></mbsc-input>
-            </div>
-            <div class="md-cac-btn mbsc-form-group-inset mbsc-btn-group-block" *ngIf="!ownerCreatedText">
-                <mbsc-button type="submit" [disabled]="!frm.valid">{{createOwnerAccountText}}</mbsc-button>
-            </div>
-            <button class="mbsc-btn-flat" style="align-content: center" type="button" [hidden]="ownerCreatedText">{{ownerCreatedText}}</button>
-        </div>
+                <div class="mbsc-btn-group-justified">
+                    <mbsc-button type="submit" color="dark" [disabled]="frm.invalid && (frm.dirty || frm.touched)">Next</mbsc-button>
+                    <mbsc-button type="button" label={{ownerCreatedText}} color="dark" *ngIf="ownerCreatedText">Next</mbsc-button>
+                  </div>
+
+
     </form>
 </mbsc-form>
+<!-- <br *ngIf="!ownerCreatedText">
+        <div class="md-cac-title mbsc-padding" *ngIf="!ownerCreatedText">
+            <p>{{continueToCreateText}}</p>
+        </div> -->
+<!-- <p-panel header="{{continueToCreateText}}" #pnl *ngIf="!ownerCreatedText" #pnl> -->
+<!-- <div class="md-cac-cont">
+            <div *ngIf="!ownerCreatedText">
+                <mbsc-input required ngModel name="name" type="text" placeholder={{nameText}}></mbsc-input>
+                <mbsc-input name="email" type="email" required ngModel placeholder={{emailText}} email></mbsc-input>
+                <mbsc-input name="password" type="password" required ngModel placeholder={{passwordText}} password-toggle="true" minlength="6"></mbsc-input>
+                <mbsc-input type="number" name="numpad" required ngModel placeholder={{phoneText}}></mbsc-input>
+                <mbsc-input type="text" name="busType" mbsc-select [mbsc-data]="busTypeData" [mbsc-options]="selectOptions" ngModel required
+                    placeholder={{selectBusinessTypeText}}></mbsc-input>
+                <mbsc-input required ngModel name="busName" type="text" placeholder={{busNameText}}></mbsc-input>
+                <div class="md-cac-btn mbsc-form-group-inset">
+                    <mbsc-button type="submit" [disabled]="!frm.valid">{{createOwnerAccountText}}</mbsc-button>
+                </div>
+            </div>
+        </div> -->
+<!-- </p-panel> -->
+<!-- </form>
+</mbsc-form> -->
+<!-- </p-panel> -->
 
-<div class="align-items-center">
+<!-- <div class="md-cac-btn mbsc-form-group-inset mbsc-btn-group-block" *ngIf="ownerCreatedText">
+    <button pButton type="button" label={{ownerCreatedText}} class="ui-button-success"></button>
+</div> -->
+
+
+<!-- <div class="center">
         <p-progressSpinner *ngIf="spinning"></p-progressSpinner>
+</div> -->
+<!-- <p-blockUI [blocked]="!spinning" [target]="pnl">
+        <i class="fa fa-5x" style="position:absolute;top:25%;left:50%;">
+            <img src="/assets/126.gif" />
+            <br>
+            <p style="font-size: 20px;color: rgb(7, 7, 7);font-style: bold">Creating...</p>
+        </i>
+    </p-blockUI> -->
+
+<div *ngIf="spinning" class="loader ">
+    <i class="fa fa-5x" style="position:absolute;top:25%;left:50%;">
+        <img src="/assets/126.gif" />
+        <br>
+        <p style="font-size: 20px;color: rgb(7, 6, 6);font-style: bold">Creating...</p>
+    </i>
 </div>
 
 
-    <!-- <div class="md-chart-pic"></div>  -->
-=======
-<!-- <div class="md-chart-pic"></div>  -->
 
-  <br>
-  <div class="md-cac-title mbsc-padding">
-       <p>{{ 'continue_owner_create' | translate}}</p> 
-  </div>
-  <div class="md-cac-cont">
-      <div class="">
-          <mbsc-input name="username" type="text" placeholder={{nameText}}></mbsc-input>
-          <mbsc-input name="email" type="email" placeholder={{emailText}}></mbsc-input>
-          <mbsc-input name="password" type="text" placeholder={{passwordText}} password-toggle="true"></mbsc-input>
-          <mbsc-input [(ngModel)]="numpad" mbsc-numpad [mbsc-options]="numpadSettings" placeholder={{phoneText}}></mbsc-input>
-      </div>
-      <div class="md-cac-btn mbsc-form-group-inset mbsc-btn-group-block">
-          <mbsc-button type="submit">Create account</mbsc-button>
-          <mbsc-button flat="true"> I'll do it later</mbsc-button>
-      </div>
-  </div>
-</mbsc-form>
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+<!-- <div class="md-chart-pic"></div>  -->

@@ -1,0 +1,10 @@
+<div class="mbsc-btn-group-block" *ngIf="categorySelected">
+    <mbsc-button (click)="createNewSubCategory()">Create New SubCategory</mbsc-button>
+    <br>
+    <mbsc-input type="text" name="subCategory" mbsc-select [mbsc-data]="subCategories" [mbsc-options]="selectOptions" 
+    placeholder="Select A SubCategory" [(ngModel)]="selected" (onSet)="subCategorySelected($event)"></mbsc-input>
+  </div>
+  
+  <router-outlet *ngIf="displaySelected"></router-outlet>
+  
+  <p *ngIf="!categorySelected">Please make a selection for category first!!</p>

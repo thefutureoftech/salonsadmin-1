@@ -1,0 +1,22 @@
+.mbsc-ios.mbsc-form{
+    color: blue;
+}
+
+.md-layout{
+    width: 100%
+}
+.md-layout.mbsc-scv-item {
+    background-color: rgb(7, 2, 2);
+    font-weight: bold;
+    text-align: center;
+}
+
+.md-layout.mbsc-scv-c {
+    margin: 10px 0
+}
+
+.md-pages.mbsc-scv-item {
+    height: 80px;
+    margin: 0 10px
+}
+

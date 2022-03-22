@@ -1,66 +1,67 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-<<<<<<< HEAD
-import {HttpClientModule} from '@angular/common/http';
-=======
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
-<<<<<<< HEAD
-import {ScheduleModule} from 'primeng/schedule';
-
-import { MbscModule } from '@mobiscroll/angular';
-import { FormsModule } from '@angular/forms';
-import { TranslateService } from '../translate/translate.service';
-import { TRANSLATION_PROVIDERS } from '../translate/translation';
-import { TranslatePipe } from '../translate/translate.pipe';
-import { UserDBService } from '../services/user.dbservice';
+import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import {PanelModule} from 'primeng/panel';
-import {BlockUIModule} from 'primeng/blockui';
-=======
+import { PanelModule } from 'primeng/panel';
+import { BlockUIModule } from 'primeng/blockui';
+import {FileUploadModule} from 'primeng/fileupload';
+import {TableModule} from 'primeng/table';
+import {CheckboxModule} from 'primeng/checkbox';
+import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import {TreeModule} from 'primeng/tree';
+import {TreeNode} from 'primeng/api';
 import { MbscModule } from '@mobiscroll/angular';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { MDBBootstrapModules } from 'ng-mdb-pro';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService } from '../translate/translate.service';
 import { TRANSLATION_PROVIDERS } from '../translate/translation';
 import { TranslatePipe } from '../translate/translate.pipe';
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
+
+
 
 
 @NgModule({
     declarations: [
-      HomeComponent,
-      NavbarComponent,
-      TranslatePipe
+        HomeComponent,
+        NavbarComponent,
+        TranslatePipe,
+        LoginComponent
     ],
     imports: [
-      CommonModule,
-<<<<<<< HEAD
-      MbscModule,
-      HttpClientModule,
-      ScheduleModule,
-      FormsModule,
-      ProgressSpinnerModule,
-      PanelModule,
-      BlockUIModule
+        CommonModule,
+        MbscModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        MatIconModule
+
+        // ProgressSpinnerModule,
+        // PanelModule,
+        // BlockUIModule,
+        // ButtonModule,
+        // FileUploadModule,
+        // TableModule,
+        // CheckboxModule,
+        // TriStateCheckboxModule,
+        // ToggleButtonModule,
+        // TreeModule
 
     ],
     exports: [
-        NavbarComponent, TranslatePipe, MbscModule, ProgressSpinnerModule, PanelModule, BlockUIModule
-    ],
-    providers: [TRANSLATION_PROVIDERS, TranslateService, UserDBService],
-=======
-      MDBBootstrapModules.forRoot(),
-      MbscModule
-    ],
-    exports: [
-        NavbarComponent, TranslatePipe, MDBBootstrapModules, MbscModule
+        NavbarComponent, TranslatePipe, MbscModule, MatButtonModule, MatIconModule
+        // ScheduleModule,
+        // ProgressSpinnerModule, PanelModule, BlockUIModule,
+        // ButtonModule, FileUploadModule, TableModule, CheckboxModule,
+        // TriStateCheckboxModule, ToggleButtonModule, TreeModule
     ],
     providers: [TRANSLATION_PROVIDERS, TranslateService],
->>>>>>> 43e2d8523ea1db4e4a932c580087ddad5b842588
-    schemas: [ NO_ERRORS_SCHEMA ]
-  })
-  export class ShellModule {}
+    schemas: [NO_ERRORS_SCHEMA]
+})
+export class ShellModule { }

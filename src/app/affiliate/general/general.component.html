@@ -1,0 +1,22 @@
+<mbsc-form [options]="formSettings">
+  <form #frm="ngForm" novalidate>
+
+    <h3 style="text-align: center">Affiliate</h3>
+
+
+    <mbsc-tab-nav [options]="tabSettings">
+      <mbsc-nav-item [selected]="currentTab == 'requests'" [routerLink]="['./list/requests']" queryParamsHandling="merge" (click)="goToTab('general')">
+        Withdraw Requests
+      </mbsc-nav-item>
+      <mbsc-nav-item [selected]="currentTab == 'members'" [routerLink]="['./list/members']" queryParamsHandling="merge" (click)="goToTab('services')">
+        Affiliate Members
+      </mbsc-nav-item>
+      <mbsc-nav-item [selected]="currentTab == 'dashboard'" [routerLink]="['./dashboard']" queryParamsHandling="merge" (click)="goToTab('permissions')">
+        Dashboard
+      </mbsc-nav-item>
+    </mbsc-tab-nav>
+
+    <router-outlet></router-outlet>
+
+  </form>
+</mbsc-form>
